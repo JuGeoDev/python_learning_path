@@ -3,14 +3,19 @@ import tkinter as tk
 root = tk.Tk()
 root.title("Calculator")
 #Configure window. E.g. color
-root.configure(bg='lightblue', width=100, height=100)
+root.configure(bg='#BDFCC9', width=100, height=100)
 root_standardwidth = 5
 
 # Widgets are added here
 
 #Frame for calc
-frame = tk.Frame(root, bg="lightgreen", width=75, height=75, bd=3, relief=tk.RIDGE)
+frame = tk.Frame(root, bg="plum1", width=75, height=75, bd=3, relief=tk.RIDGE)
 frame.pack(padx=20, pady=20)
+
+#Add empty row in grid at the top left
+emptyline = tk.Label(frame, width=root_standardwidth, bg='#FFBBFF').grid(row=0, column=0)
+#Add empty row in grid at the bottom right
+emptyline = tk.Label(frame, width=root_standardwidth, bg='#FFBBFF').grid(row=6, column=7)
 
 #Buttons 1-9
 button_one = tk.Button(frame, text="1", bg='white', width=root_standardwidth, command=root.destroy).grid(row=1, column=1)
@@ -31,11 +36,11 @@ button_divide = tk.Button(frame, text="/", bg='white', width=root_standardwidth,
 button_equals = tk.Button(frame, text="=", bg='white', width=root_standardwidth, command=root.destroy).grid(row=3, column=5)
 
 #Add empty row in grid to seperate buttons from input
-emptyline = tk.Label(frame, width=root_standardwidth, bg='lightgreen').grid(row=4, column=1)
+emptyline = tk.Label(frame, width=root_standardwidth, bg='#FFBBFF').grid(row=4, column=1)
 
 
 #Creates labels inside window and sorts them in a grid
-input_label = tk.Label(frame, bg='white', width=10, text="Equation:").grid(row=5, column=1)
+input_label = tk.Label(frame, bg="#E6FCF5", width=10, text="Equation:").grid(row=5, column=1)
 
 #Accepts single line user input
 equation_input = tk.Entry(frame, width=10).grid(row=5, column=3)
