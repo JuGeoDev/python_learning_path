@@ -7,10 +7,10 @@ root.title("Calculator")
 root.configure(bg='#BDFCC9', width=100, height=100)
 root_standardwidth = 5
 
-#Saves buttonclick value
+#Saves buttonclick value, yeets buttonclick value to equation string
 output= tk.StringVar(value="0")
 def save_input_char(button_input):
-    output.set(str(button_input))
+    output.set(str(output.get()+str(button_input)))
 
 #This will be the string from where we extract the equation
 equation_expression= tk.StringVar(value="0")
@@ -43,7 +43,8 @@ button_plus = tk.Button(frame, text="+",font=("Comic Sans", "12"), bg='white', a
 button_minus = tk.Button(frame, text="-", font=("Comic Sans", "12"), bg='white', activebackground="#F8E7F8", width=root_standardwidth, command=lambda: save_input_char("-")).grid(row=1, column=6)
 button_multiply = tk.Button(frame, text="*", font=("Comic Sans", "12"), bg='white', activebackground="#F8E7F8", width=root_standardwidth, command=lambda: save_input_char("*")).grid(row=2, column=5)
 button_divide = tk.Button(frame, text="/", font=("Comic Sans", "12"), bg='white', activebackground="#F8E7F8", width=root_standardwidth, command=lambda: save_input_char("/")).grid(row=2, column=6)
-button_equals = tk.Button(frame, text="=", font=("Comic Sans", "12"), bg='white', activebackground="#F8E7F8", width=root_standardwidth, command=lambda: calculator_logic.compute_equation()).grid(row=3, column=5)
+button_equals = tk.Button(frame, text="=", font=("Comic Sans", "12"), bg='white', activebackground="#F8E7F8", width=root_standardwidth, command=lambda: calculator_logic.compute_equation(output))
+button_equals.grid(row=3, column=5)
 
 #Add empty row in grid to seperate buttons from input
 emptyline = tk.Label(frame, width=root_standardwidth, bg='#FFBBFF').grid(row=5, column=1)
@@ -52,7 +53,7 @@ emptyline = tk.Label(frame, width=root_standardwidth, bg='#FFBBFF').grid(row=5, 
 input_label = tk.Label(frame, font=("Comic Sans", "12"), bg="#E6FCF5", width=10, text="Equation:").grid(row=6, column=1)
 result_label = tk.Label(frame, font=("Comic Sans", "12"), bg="#E6FCF5", width=10, text="Result:").grid(row=8, column=1)
 #Show current input
-equation_output = tk.Label(frame, font=("Comic Sans", "12"), bg= "#E6FCF5", width=20, textvariable=equation_expression)
+equation_output = tk.Label(frame, font=("Comic Sans", "12"), bg= "#E6FCF5", width=20, textvariable=output)
 equation_output.grid(row=6, column=3)
 #Show result of equation
 result_output = tk.Label(frame, font=("Comic Sans", "12"), bg= "#E6FCF5", width=20, textvariable=output)
